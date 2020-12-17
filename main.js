@@ -3,45 +3,52 @@
 // Write each function below its comment and you'll be doing pretty well.  The printTodo function has been begun for you so that we can drill down in the comments on its individual steps. Add the code for each part below its comment as well.
 // Doing our code under its pre-written comment in this way will self-document your code and, more importantly, make it easier to follow along with the assignment!
 
-// Remember that each function below is a helper function or an event listener function that runs when the user interacts with our page. So we should NOT be calling any functions or doing anythinmg in the global scope. Just functions functions functions!
+// Remember that each function below is a helper function or an event listener function that runs when the user interacts with our page. So we should NOT be calling any functions or doing anything in the global scope. Just functions functions functions!
 // (With one big exception, which you'll see in the comments when we get there.)
 
 // And now: code away.
 
 
-
 // A function that, given a todo object, adds an item to our todo list array.
 
-
+const addTodo = (toDo) => {
+  const todo = {
+    text: toDo,
+  }
+}
 
 // A function that removes an item at a given index from our todo list array. You can use splice!
 
+const removeTodo = (givenIndex) => {
+  todos.splice(givenIndex, 1)
+}
 
 // Given a todo object, put it on the DOM. This is a pretty big function, so we'll walk through the different parts of it.
 const printTodo = function(todo) {
   // Use `document.createElement` to make an <li>, and set its text (preferably using `.innerText`) to be our given object's text field. Check out what a todo object looks like in `todos.js` if you need to!
 
-
+const li = document.createElement('li');
+li.innerText = todo.text;
 
   // Query the ol and save it in a variable.
 
-
+const ul = document.querySelector('.todo-list');
 
   // Append the li we made to the ul as the last child using `.appendChild`. If this isn't working for you, check what is being appended to what!
 
-
+ul.appendChild(li);
 
   // Give our new li a `todo-item` class using `classList`. This will allow us to style it later if we want.
 
-
+li.classList = 'todo-item';
 
   // Give our new li an id that is the object's id. This is so that we have a matching relationship between todo _html elements_ and their corresponding _array objects_. Now we'll be able to find the corresponding array object when they click to toggle the completeness on a DOM element.
 
-
+li.id = todo.id;
 
   // Give the li a `complete` class if the todo object indicates it was complete already. (Again, check the `todos.js` to see what the objects look like!)
 
-
+li.classList = 'complete';
 
   // Give the <p> with the todo's text in it an event listener to toggle that todo's completeness.
   // This is quite a challenge, so feel free to come back to this one at the end!
@@ -50,7 +57,6 @@ const printTodo = function(todo) {
 
 
 }
-
 
 // A function that print ALL todos. It should loop through our todos array and call the above print-one-todo function on each one.
 
